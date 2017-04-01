@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "John Thomas",
+      "authorEmail": "johnt67@gmail.com",
+      "authorUrl": ""
+    }
+  }
+}
