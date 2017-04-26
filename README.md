@@ -23,6 +23,16 @@ yo basic-cpp
  * Yeoman can be too opinionated at times but is easily convinced not to be.
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
+ ## Basic flow
+ * app name  -- what is your cpp application name?
+    * create directory
+    * create a main.cpp
+    * create an assoicated makefile that outputs the app name
+
+## class subgenerator
+* just call with your class name
+    * generates the class with a constructor and deconstructor
+
 ## License
 
 MIT © [John Thomas]()
