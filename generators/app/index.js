@@ -42,7 +42,7 @@ module.exports = class extends Generator {
       message: 'Would you like to use C++ 11 syntax?'
     });
 
-    this.prompt(prompts).then(answers => {
+    return this.prompt(prompts).then(answers => {
       if (answers.name) {
         this.options.appname = answers.name;
       }
@@ -61,12 +61,21 @@ module.exports = class extends Generator {
   default() {
   }
   writing() {
-    // this.log('temp path is ' + this.templatePath());
-    // this.log('dest path is ' + this.destinationPath());
-    // this.fs.copy(
-    //   this.templatePath('dummyfile.txt'),
-    //   this.destinationPath('dummyfile.txt')
-    // );
+    var destination = '';
+    if (this.options.projectDirName) {
+      destination = this.options.projectDirName + '/';
+    }
+    this.fs.copyTpl(
+       this.templatePath('_CMakeLists.txt'),
+       this.destinationPath(destination + 'CMakeLists.txt'), {
+         appname: this.options.appname
+       }
+    );
+
+    this.fs.copy(
+      this.templatePath('_main.cpp'),
+      this.destinationPath(destination + 'main.cpp')
+    );
   }
 
   conflicts() {
