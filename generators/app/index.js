@@ -20,26 +20,28 @@ module.exports = class extends Generator {
 
     let prompts = [];
 
-    // Only add this prompt of it was not specified as an arguement.
+    // Only add this prompt if it was not specified as an arguement.
     if (!this.options.appname) {
       prompts.push({
         type: 'input',
         name: 'name',
         message: 'What would you like your application name to be?',
-        default: this.appname
+        default: this.config.get('appname') || this.appname
       });
     }
 
     prompts.push({
       type: 'confirm',
       name: 'projectDir',
-      message: 'Create a project directory?'
+      message: 'Create a project directory?',
+      default: this.config.get('projectDir') || 'Y'
     });
 
     prompts.push({
       type: 'confirm',
       name: 'cpp11',
-      message: 'Would you like to use C++ 11 syntax?'
+      message: 'Would you like to use C++ 11 syntax?',
+      default: this.config.get('cpp11') || 'Y'
     });
 
     return this.prompt(prompts).then(answers => {
@@ -52,6 +54,12 @@ module.exports = class extends Generator {
         this.options.projectDirName = this.options.appname;
       }
       this.options.cpp11 = answers.cpp11;
+
+      // Store the supplied settings.
+      this.config.set('appname', this.options.appname);
+      this.config.set('projectDir', this.options.projectDir);
+      this.config.set('cpp11', this.options.cpp11);
+      this.config.save();
     });
   }
 
