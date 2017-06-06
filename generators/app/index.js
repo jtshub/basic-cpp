@@ -58,6 +58,7 @@ module.exports = class extends Generator {
       // Store the supplied settings.
       this.config.set('appname', this.options.appname);
       this.config.set('projectDir', this.options.projectDir);
+      this.config.set('projectDirName', this.options.projectDirName);
       this.config.set('cpp11', this.options.cpp11);
       this.config.save();
     });
