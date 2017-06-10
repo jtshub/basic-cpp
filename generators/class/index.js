@@ -19,14 +19,14 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
         this.templatePath('_class.h'),
-        this.destinationPath(dest + this.args[0] + '.h'), {
+        this.destinationPath(dest + 'include/' + this.args[0] + '.h'), {
           className: this.args[0]
         }
     );
 
     this.fs.copyTpl(
         this.templatePath('_class.cpp'),
-        this.destinationPath(dest + this.args[0] + '.cpp'), {
+        this.destinationPath(dest + 'src/' + this.args[0] + '.cpp'), {
           className: this.args[0]
         }
     );

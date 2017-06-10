@@ -4,9 +4,13 @@ cmake_minimum_required(VERSION 3.7.2)
 # project name
 project("<%= appname %>")
 
+include_directories(include)
+
+file(GLOB SOURCES "src/*.cpp")
+
 # set the output folders
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/bin)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
-add_executable("<%= appname %>" ${PROJECT_SOURCE_DIR}/main.cpp)
+add_executable("<%= appname %>" ${SOURCES})

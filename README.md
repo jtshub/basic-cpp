@@ -29,6 +29,13 @@ yo basic-cpp
     * create a main.cpp
     * create an assoicated makefile that outputs the app name
 
+## To Do
+* write out the Readme.md
+* add the ability to reference boost and opengl
+* add the ability to regenerate the makefile when creating a new class
+* add unit tests
+* add option to regerate makefile when we add a class
+
 ## class subgenerator
 * just call with your class name
     * generates the class with a constructor and deconstructor

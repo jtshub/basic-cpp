@@ -83,7 +83,7 @@ module.exports = class extends Generator {
 
     this.fs.copy(
       this.templatePath('_main.cpp'),
-      this.destinationPath(destination + 'main.cpp')
+      this.destinationPath(destination + 'src/main.cpp')
     );
   }
 
