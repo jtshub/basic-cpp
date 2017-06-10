@@ -11,7 +11,7 @@ describe('generator-basic-cpp:app', () => {
 
   it('creates files', () => {
     assert.file([
-      'dummyfile.txt'
+      'src/main.cpp'
     ]);
   });
 });

@@ -2,6 +2,10 @@
 
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
+const fs = require('fs');
+
+const CMAKETXT = 'CMakeLists.txt';
+const CMAKECMD = 'cmake';
 
 module.exports = class extends Generator {
 
@@ -11,7 +15,18 @@ module.exports = class extends Generator {
   }
 
   prompting() {
-    this.log('generating class ' + chalk.red(this.args[0]));
+    let prompts = [];
+
+    prompts.push({
+      type: 'confirm',
+      name: 'regenMake',
+      message: 'Regenerate makefile to include new class ' + chalk.yellow(this.args[0]) + '?',
+      default: 'Y'
+    });
+
+    return this.prompt(prompts).then(answers => {
+      this.options.regenMake = answers.regenMake;
+    });
   }
 
   writing() {
@@ -30,5 +45,34 @@ module.exports = class extends Generator {
           className: this.args[0]
         }
     );
+  }
+
+  install() {
+    if (this.options.regenMake) {
+      var cmakeCmdArg = '';
+      if (this.config.get('projectDir') && fs.existsSync(this.config.get('projectDirName'))) {
+        var pDir = this.config.get('projectDirName');
+        if (fs.existsSync(pDir)) {
+          cmakeCmdArg = pDir + '/' + CMAKETXT;
+        }
+      } else {
+        cmakeCmdArg = CMAKETXT;
+      }
+
+      if (cmakeCmdArg === '') {
+        this.log(chalk.red('Unable to regenerate makefile, project directory does not exist.'));
+      } else {
+        this.spawnCommandSync(CMAKECMD, [cmakeCmdArg]);
+      }
+    }
+  }
+
+  end() {
+    this.log('created class ' + chalk.yellow(this.args[0]));
+    if (this.options.regenMake) {
+      this.log('regenerated makefile');
+    } else {
+      this.log('did not regnerate makefile as specified');
+    }
   }
 };

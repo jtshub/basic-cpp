@@ -7,6 +7,17 @@
         {
             "type": "node",
             "request": "launch",
+            "name": "Yeoman basic-cpp generator",
+            "program": "${workspaceRoot}/node_modules/yo/lib/cli.js",
+            "args": [
+                "basic-cpp generator"
+            ],
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "type": "node",
+            "request": "launch",
             "name": "Launch Program",
             "program": "${file}"
         }
