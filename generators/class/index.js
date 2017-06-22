@@ -2,10 +2,7 @@
 
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
-const fs = require('fs');
-
-const CMAKETXT = 'CMakeLists.txt';
-const CMAKECMD = 'cmake';
+const util = require('../util');
 
 module.exports = class extends Generator {
 
@@ -49,21 +46,7 @@ module.exports = class extends Generator {
 
   install() {
     if (this.options.regenMake) {
-      var cmakeCmdArg = '';
-      if (this.config.get('projectDir') && fs.existsSync(this.config.get('projectDirName'))) {
-        var pDir = this.config.get('projectDirName');
-        if (fs.existsSync(pDir)) {
-          cmakeCmdArg = pDir + '/' + CMAKETXT;
-        }
-      } else {
-        cmakeCmdArg = CMAKETXT;
-      }
-
-      if (cmakeCmdArg === '') {
-        this.log(chalk.red('Unable to regenerate makefile, project directory does not exist.'));
-      } else {
-        this.spawnCommandSync(CMAKECMD, [cmakeCmdArg]);
-      }
+      util.cmake(this.spawnCommandSync, this.config.get('projectDirName'));
     }
   }
 

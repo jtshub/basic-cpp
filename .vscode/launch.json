@@ -4,16 +4,35 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        {
+       {
             "type": "node",
             "request": "launch",
             "name": "Yeoman basic-cpp generator",
-            "program": "${workspaceRoot}/node_modules/yo/lib/cli.js",
+            "program": "/usr/local/lib/node_modules/yo/lib/cli.js",
             "args": [
-                "basic-cpp generator"
+                "basic-cpp"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
+        },
+        {
+            "name": "Test",
+            "type": "node",
+            "request": "attach",
+            "protocol": "inspector",
+            "address": "localhost",
+            "port": 9229,
+            "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
+            "stopOnEntry": false,
+            "args": ["--runInBand"],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "env": {
+                "NODE_ENV": "development"
+            },
+            "sourceMaps": false,
+            "console": "integratedTerminal"
         },
         {
             "type": "node",

@@ -2,6 +2,7 @@
 const Generator = require('yeoman-generator');
 const chalk = require('chalk');
 const yosay = require('yosay');
+const util = require('../util');
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -54,7 +55,7 @@ module.exports = class extends Generator {
         this.options.projectDirName = this.options.appname;
       }
       this.options.cpp11 = answers.cpp11;
-
+      
       // Store the supplied settings.
       this.config.set('appname', this.options.appname);
       this.config.set('projectDir', this.options.projectDir);
@@ -74,6 +75,7 @@ module.exports = class extends Generator {
     if (this.options.projectDirName) {
       destination = this.options.projectDirName + '/';
     }
+
     this.fs.copyTpl(
        this.templatePath('_CMakeLists.txt'),
        this.destinationPath(destination + 'CMakeLists.txt'), {
@@ -91,6 +93,7 @@ module.exports = class extends Generator {
   }
 
   install() {
+    util.cmake(this.spawnCommandSync, this.config.get('projectDirName'));
   }
 
   end() {
