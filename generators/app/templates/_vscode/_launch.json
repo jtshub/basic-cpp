@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "name": "Chapter 3",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${workspaceRoot}/bin/ch3",
+        "stopAtEntry": false,
+        "cwd": "${workspaceRoot}/bin",
+        "internalTerminal": true,
+        "MIMode": "lldb"
+    }]
+}

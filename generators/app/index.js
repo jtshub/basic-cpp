@@ -39,6 +39,13 @@ module.exports = class extends Generator {
     });
 
     prompts.push({
+      type: "confirm",
+      name: "setupVSC",
+      message: "Setup Visual Studio code settings?",
+      default: this.config.get('setupVSC') || 'Y'
+    });
+
+    prompts.push({
       type: 'confirm',
       name: 'cpp11',
       message: 'Would you like to use C++ 11 syntax?',
@@ -75,6 +82,11 @@ module.exports = class extends Generator {
     if (this.options.projectDirName) {
       destination = this.options.projectDirName + '/';
     }
+
+    this.fs.copyTpl(
+      this.templatePath('_vscode/_tasks.json'),
+      this.destinationPath(destination + '.vscode/tasks.json')
+    );
 
     this.fs.copyTpl(
        this.templatePath('_CMakeLists.txt'),

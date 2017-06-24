@@ -32,6 +32,10 @@ Adding a new class to your application.  New classes have their own header and i
 ```bash
 yo basic-cpp:class [classname]
 ```
+
+## Visual Studio Code intergration
+
+This generator will setup a basic set of [Visual Studio Code] (https://code.visualstudio.com) settings under the .vscode directory
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
@@ -41,7 +45,7 @@ yo basic-cpp:class [classname]
 
 ## To Do
 * write out the Readme.md -- spell check it
-* add the ability to reference boost
+* have the generator setup the vscode settings to debug the app
 * add unit tests
 
 ## License
