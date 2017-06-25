@@ -39,9 +39,9 @@ module.exports = class extends Generator {
     });
 
     prompts.push({
-      type: "confirm",
-      name: "setupVSC",
-      message: "Setup Visual Studio code settings?",
+      type: 'confirm',
+      name: 'setupVSC',
+      message: 'Setup Visual Studio code settings?',
       default: this.config.get('setupVSC') || 'Y'
     });
 
@@ -62,7 +62,7 @@ module.exports = class extends Generator {
         this.options.projectDirName = this.options.appname;
       }
       this.options.cpp11 = answers.cpp11;
-      
+
       // Store the supplied settings.
       this.config.set('appname', this.options.appname);
       this.config.set('projectDir', this.options.projectDir);
@@ -86,6 +86,16 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('_vscode/_tasks.json'),
       this.destinationPath(destination + '.vscode/tasks.json')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_vscode/_launch.json'),
+      this.destinationPath(destination + '.vscode/launch.json')
+    );
+
+    this.fs.copyTpl(
+      this.templatePath('_vscode/_c_cpp_properties.json'),
+      this.destinationPath(destination + '.vscode/c_cpp_properties.json')
     );
 
     this.fs.copyTpl(

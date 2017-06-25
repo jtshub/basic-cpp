@@ -9,7 +9,6 @@ This generator relies on [Cmake](https://cmake.org/) to generate makefiles.  Onc
 
 First, install [Yeoman](http://yeoman.io) and generator-basic-cpp using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
-
 ```bash
 npm install -g yo
 npm install -g generator-basic-cpp
@@ -35,7 +34,8 @@ yo basic-cpp:class [classname]
 
 ## Visual Studio Code intergration
 
-This generator will setup a basic set of [Visual Studio Code] (https://code.visualstudio.com) settings under the .vscode directory
+This generator will setup a basic set of [Visual Studio Code](https://code.visualstudio.com) settings under the .vscode directory within your project directory.  Additionally, you should have the [C/C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) from Microsoft installed.
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
