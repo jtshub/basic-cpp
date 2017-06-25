@@ -1,14 +1,22 @@
 {
     "version": "0.2.0",
     "configurations": [
-    {
-        "name": "Chapter 3",
-        "type": "cppdbg",
-        "request": "launch",
-        "program": "${workspaceRoot}/bin/ch3",
-        "stopAtEntry": false,
-        "cwd": "${workspaceRoot}/bin",
-        "internalTerminal": true,
-        "MIMode": "lldb"
-    }]
+        {
+            "name": "<%= appname %>",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/bin/<%= appname %>",
+            "preLaunchTask": "make",
+            "internalConsoleOptions": "openOnFirstSessionStart",
+            "stopAtEntry": false,
+            "cwd": "${workspaceRoot}/bin",
+            "externalConsole": false,
+            "osx": {
+                "MIMode": "lldb"
+            },
+            "logging": {
+                "programOutput": true
+            }
+        }
+    ]
 }

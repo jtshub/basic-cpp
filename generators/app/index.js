@@ -90,7 +90,9 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('_vscode/_launch.json'),
-      this.destinationPath(destination + '.vscode/launch.json')
+      this.destinationPath(destination + '.vscode/launch.json', {
+        appname: this.options.appname
+      })
     );
 
     this.fs.copyTpl(
