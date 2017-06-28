@@ -5,17 +5,11 @@ var helpers = require('yeoman-test');
 
 describe('basic-cpp:app no arguments', () => {
   beforeEach(() => {
-    console.log(__dirname);
     return helpers.run(path.join(__dirname, '../generators/app'))
-      .withPrompts({appname: 'foobar',
-        projectDir: 'foobar',
-        cpp11: true
-      });
-  });
-
-  it('created and CD into a folder named like the app', () => {
-    console.log(path.basename(process.cwd()));
-    assert.equal(path.basename(__dirname, 'foobar'));
+      .withPrompts({name: 'foobar',
+        projectDir: true,
+        setupVSC: true,
+        cpp11: true});
   });
 
   it('creates files', function () {

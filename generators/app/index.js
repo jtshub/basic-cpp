@@ -67,6 +67,7 @@ module.exports = class extends Generator {
       this.config.set('appname', this.options.appname);
       this.config.set('projectDir', this.options.projectDir);
       this.config.set('projectDirName', this.options.projectDirName);
+      this.config.set('setupVSC', answers.setupVSC);
       this.config.set('cpp11', this.options.cpp11);
       this.config.save();
     });
@@ -90,9 +91,9 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
       this.templatePath('_vscode/_launch.json'),
-      this.destinationPath(destination + '.vscode/launch.json', {
+      this.destinationPath(destination + '.vscode/launch.json'), {
         appname: this.options.appname
-      })
+      }
     );
 
     this.fs.copyTpl(
@@ -117,7 +118,9 @@ module.exports = class extends Generator {
   }
 
   install() {
-    util.cmake(this.spawnCommandSync, this.config.get('projectDirName'));
+    if (this.config.get('setupVSC')) {
+      util.cmake(this.spawnCommand, this.config.get('projectDirName'));
+    }
   }
 
   end() {
