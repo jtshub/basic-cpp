@@ -124,5 +124,6 @@ module.exports = class extends Generator {
   }
 
   end() {
+    this.log('project ' + this.options.appname + ' has been created');
   }
 };
