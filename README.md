@@ -3,7 +3,7 @@
 
 ## Additional requirements
 
-This generator relies on [Cmake](https://cmake.org/) to generate makefiles.  Once Cmake is installed, make sure it is in our path and is referenceable from the command line.
+This generator relies on [Cmake](https://cmake.org/) version 3.7.2 an higher to generate makefiles.  Once Cmake is installed, make sure it is in our path and is referenceable from the command line. 
 
 ## Installation
 

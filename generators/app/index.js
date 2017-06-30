@@ -62,12 +62,13 @@ module.exports = class extends Generator {
         this.options.projectDirName = this.options.appname;
       }
       this.options.cpp11 = answers.cpp11;
+      this.options.setupVSC = answers.setupVSC;
 
       // Store the supplied settings.
       this.config.set('appname', this.options.appname);
       this.config.set('projectDir', this.options.projectDir);
       this.config.set('projectDirName', this.options.projectDirName);
-      this.config.set('setupVSC', answers.setupVSC);
+      this.config.set('setupVSC', this.options.setupVSC);
       this.config.set('cpp11', this.options.cpp11);
       this.config.save();
     });
@@ -83,28 +84,37 @@ module.exports = class extends Generator {
     if (this.options.projectDirName) {
       destination = this.options.projectDirName + '/';
     }
+    this.log('setup vsc ' + this.options);
+    if (this.options.setupVSC) {
+      this.fs.copyTpl(
+        this.templatePath('_vscode/_tasks.json'),
+        this.destinationPath(destination + '.vscode/tasks.json')
+      );
 
-    this.fs.copyTpl(
-      this.templatePath('_vscode/_tasks.json'),
-      this.destinationPath(destination + '.vscode/tasks.json')
-    );
+      this.fs.copyTpl(
+        this.templatePath('_vscode/_launch.json'),
+        this.destinationPath(destination + '.vscode/launch.json'), {
+          appname: this.options.appname
+        }
+      );
 
-    this.fs.copyTpl(
-      this.templatePath('_vscode/_launch.json'),
-      this.destinationPath(destination + '.vscode/launch.json'), {
-        appname: this.options.appname
-      }
-    );
+      this.fs.copyTpl(
+        this.templatePath('_vscode/_c_cpp_properties.json'),
+        this.destinationPath(destination + '.vscode/c_cpp_properties.json')
+      );
+    }
 
-    this.fs.copyTpl(
-      this.templatePath('_vscode/_c_cpp_properties.json'),
-      this.destinationPath(destination + '.vscode/c_cpp_properties.json')
-    );
+    var use11 = 'OFF';
+    if (this.options.cpp11) {
+      this.log('use cpp');
+      use11 = 'ON';
+    }
 
     this.fs.copyTpl(
        this.templatePath('_CMakeLists.txt'),
        this.destinationPath(destination + 'CMakeLists.txt'), {
-         appname: this.options.appname
+         appname: this.options.appname,
+         cpp11: use11
        }
     );
 
