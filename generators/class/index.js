@@ -31,7 +31,7 @@ module.exports = class extends Generator {
 
     this.fs.copyTpl(
         this.templatePath('_class.h'),
-        this.destinationPath(dest + 'include/' + this.args[0] + '.h'), {
+        this.destinationPath(dest + 'inc/' + this.args[0] + '.h'), {
           className: this.args[0]
         }
     );

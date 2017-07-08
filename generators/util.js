@@ -17,7 +17,7 @@ exports.cmake = function (spawn, pDir) {
   if (cmakeCmdArg === '') {
     this.log(chalk.red('Unable to regenerate makefile, project directory does not exist.'));
   } else {
-    spawn(CMAKECMD, [cmakeCmdArg]);
+    return spawn(CMAKECMD, [cmakeCmdArg]);
   }
 };
 

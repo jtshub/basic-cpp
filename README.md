@@ -3,7 +3,7 @@
 
 ## Additional requirements
 
-This generator relies on [Cmake](https://cmake.org/) version 3.7.2 an higher to generate makefiles.  Once Cmake is installed, make sure it is in our path and is referenceable from the command line. 
+This generator relies on [Cmake](https://cmake.org/) version 3.7.2 or higher to generate makefiles.  Once Cmake is installed, make sure it is in our path and is referenceable from the command line. 
 
 ## Installation
 
@@ -26,13 +26,13 @@ Generating a new C++ application.  Specifying an application name is required, i
 yo basic-cpp [appname]
 ```
 
-Adding a new class to your application.  New classes have their own header and implmentation files.  Each time you add a new class [Cmake](https://cmake.org) will be used to regenerate the makefile.
+Adding a new class to your application.  New classes have their own header and implementation files.  Each time you add a new class [Cmake](https://cmake.org) will be used to regenerate the makefile automatically. 
 
 ```bash
 yo basic-cpp:class [classname]
 ```
 
-## Visual Studio Code intergration
+## Visual Studio Code integration
 
 This generator will setup a basic set of [Visual Studio Code](https://code.visualstudio.com) settings under the .vscode directory within your project directory.  Additionally, you should have the [C/C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) from Microsoft installed.
 
@@ -44,7 +44,6 @@ This generator will setup a basic set of [Visual Studio Code](https://code.visua
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ## To Do
-* write out the Readme.md -- spell check it
 * have the generator setup the vscode settings to debug the app
 * add unit tests
 

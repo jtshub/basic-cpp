@@ -10,9 +10,6 @@ module.exports = class extends Generator {
     this.argument('appname', {type: String, required: false});
   }
 
-  initializing() {
-  }
-
   prompting() {
     // Have Yeoman greet the user.
     this.log(yosay(
@@ -74,17 +71,12 @@ module.exports = class extends Generator {
     });
   }
 
-  configuring() {
-  }
-
-  default() {
-  }
   writing() {
     var destination = '';
     if (this.options.projectDirName) {
       destination = this.options.projectDirName + '/';
     }
-    this.log('setup vsc ' + this.options);
+
     if (this.options.setupVSC) {
       this.fs.copyTpl(
         this.templatePath('_vscode/_tasks.json'),
@@ -106,7 +98,6 @@ module.exports = class extends Generator {
 
     var use11 = 'OFF';
     if (this.options.cpp11) {
-      this.log('use cpp');
       use11 = 'ON';
     }
 
@@ -124,16 +115,11 @@ module.exports = class extends Generator {
     );
   }
 
-  conflicts() {
-  }
-
-  install() {
-    if (this.config.get('setupVSC')) {
-      util.cmake(this.spawnCommand, this.config.get('projectDirName'));
-    }
-  }
-
   end() {
-    this.log('project ' + this.options.appname + ' has been created');
+    var theName = this.options.appname;
+    var cmake = util.cmake(this.spawnCommand, this.config.get('projectDirName'));
+    cmake.on('exit', function () {
+      console.log(chalk.red('project ' + theName + ' has been created'));
+    });
   }
 };

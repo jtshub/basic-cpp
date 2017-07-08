@@ -27,7 +27,7 @@ describe('basic-cpp:app no arguments, default options', () => {
     assert.fileContent('foobar/CMakeLists.txt', 'add_executable("foobar"');
     assert.fileContent('foobar/CMakeLists.txt', 'set (use11 "ON")');
     assert.fileContent('foobar/.vscode/launch.json', '"name": "foobar"');
-    // Assert.fileContent('foobar/.vscode/launch.json', '/bin/<%= appname %>"');
+    assert.fileContent('foobar/.vscode/launch.json', '/bin/foobar"');
   });
 });
 
@@ -55,7 +55,7 @@ describe('basic-cpp:app with project argument', () => {
     assert.fileContent('fooblah/CMakeLists.txt', 'add_executable("fooblah"');
     assert.fileContent('fooblah/CMakeLists.txt', 'set (use11 "ON")');
     assert.fileContent('fooblah/.vscode/launch.json', '"name": "fooblah"');
-    // Assert.fileContent('foobar/.vscode/launch.json', '/bin/<%= appname %>"');
+    assert.fileContent('fooblah/.vscode/launch.json', '/bin/fooblah"');
   });
 });
 
@@ -84,7 +84,7 @@ describe('basic-cpp:app without project directory', () => {
     assert.fileContent('CMakeLists.txt', 'add_executable("fooNoProj"');
     assert.fileContent('CMakeLists.txt', 'set (use11 "ON")');
     assert.fileContent('.vscode/launch.json', '"name": "fooNoProj"');
-    // Assert.fileContent('foobar/.vscode/launch.json', '/bin/<%= appname %>"');
+    assert.fileContent('.vscode/launch.json', '/bin/fooNoProj"');
   });
 });
 
@@ -145,6 +145,6 @@ describe('basic-cpp:app not using c++11 compiler flag', () => {
     assert.fileContent('fooNo11Flag/CMakeLists.txt', 'add_executable("fooNo11Flag"');
     assert.fileContent('fooNo11Flag/CMakeLists.txt', 'set (use11 "OFF")');
     assert.fileContent('fooNo11Flag/.vscode/launch.json', '"name": "fooNo11Flag"');
-    // Assert.fileContent('foobar/.vscode/launch.json', '/bin/<%= appname %>"');
+    assert.fileContent('fooNo11Flag/.vscode/launch.json', '/bin/fooNo11Flag"');
   });
 });
