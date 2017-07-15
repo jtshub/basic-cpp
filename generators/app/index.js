@@ -8,6 +8,13 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
     this.argument('appname', {type: String, required: false});
+    var notMakeOptArgs = {
+      description: 'Skip the CMake generation of the makefile.',
+      type: Boolean,
+      default: false
+    };
+
+    this.option('doNotMake', notMakeOptArgs);
   }
 
   prompting() {
@@ -117,9 +124,16 @@ module.exports = class extends Generator {
 
   end() {
     var theName = this.options.appname;
-    var cmake = util.cmake(this.spawnCommand, this.config.get('projectDirName'));
-    cmake.on('exit', function () {
-      console.log(chalk.red('project ' + theName + ' has been created'));
-    });
+    var createdMsg = 'Project ' + theName + ' has been created.';
+    this.log(this.options.doNotMake);
+    if (this.options.doNotMake) {
+      this.log(chalk.red(createdMsg));
+      this.log(chalk.red('The automatic generation of the makefile has been skipped, run "CMake CMakeLists.txt" to generate the makefile for this project.'));
+    } else {
+      var cmake = util.cmake(this.spawnCommand, this.config.get('projectDirName'));
+      cmake.on('exit', function () {
+        console.log(chalk.red(createdMsg));
+      });
+    }
   }
 };

@@ -5,5 +5,12 @@
       "authorEmail": "johnt67@gmail.com",
       "authorUrl": ""
     }
+  },
+  "generator-basic-cpp": {
+    "appname": "blah",
+    "projectDir": true,
+    "projectDirName": "blah",
+    "setupVSC": true,
+    "cpp11": true
   }
 }

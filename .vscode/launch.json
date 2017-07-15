@@ -10,7 +10,9 @@
             "name": "Yeoman basic-cpp generator",
             "program": "/usr/local/lib/node_modules/yo/lib/cli.js",
             "args": [
-                "basic-cpp"
+                "basic-cpp",
+                "blah",
+                "--doNotMake"
             ],
             "console": "integratedTerminal",
             "internalConsoleOptions": "neverOpen"
