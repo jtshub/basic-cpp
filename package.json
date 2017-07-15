@@ -1,6 +1,6 @@
 {
   "name": "generator-basic-cpp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A basic C++ app generator.",
   "homepage": "",
   "author": {
@@ -13,7 +13,8 @@
   ],
   "main": "generators/index.js",
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "C++"
   ],
   "devDependencies": {
     "eslint": "^3.18.0",

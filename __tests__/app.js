@@ -6,6 +6,7 @@ var helpers = require('yeoman-test');
 describe('basic-cpp:app no arguments, default options', () => {
   beforeEach(() => {
     return helpers.run(path.join(__dirname, '../generators/app'))
+      .withOptions({doNotMake: true})
       .withPrompts({name: 'foobar',
         projectDir: true,
         setupVSC: true,
@@ -35,6 +36,7 @@ describe('basic-cpp:app with project argument', () => {
   beforeEach(() => {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withArguments(['fooblah'])
+      .withOptions({doNotMake: true})
       .withPrompts({projectDir: true,
         setupVSC: true,
         cpp11: true});
@@ -63,6 +65,7 @@ describe('basic-cpp:app without project directory', () => {
   beforeEach(() => {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withArguments(['fooNoProj'])
+      .withOptions({doNotMake: true})
       .withPrompts({projectDir: false,
         setupVSC: true,
         cpp11: true
@@ -92,6 +95,7 @@ describe('basic-cpp:app no vscode settings', () => {
   beforeEach(() => {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withArguments(['fooNoVsCode'])
+      .withOptions({doNotMake: true})
       .withPrompts({projectDir: true,
         setupVSC: false,
         cpp11: true
@@ -124,6 +128,7 @@ describe('basic-cpp:app not using c++11 compiler flag', () => {
   beforeEach(() => {
     return helpers.run(path.join(__dirname, '../generators/app'))
       .withArguments(['fooNo11Flag'])
+      .withOptions({doNotMake: true})
       .withPrompts({projectDir: true,
         setupVSC: true,
         cpp11: false

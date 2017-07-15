@@ -25,7 +25,7 @@ module.exports = class extends Generator {
 
     let prompts = [];
 
-    // Only add this prompt if it was not specified as an arguement.
+    // Only add this prompt if it was not specified as an argument.
     if (!this.options.appname) {
       prompts.push({
         type: 'input',
@@ -125,7 +125,7 @@ module.exports = class extends Generator {
   end() {
     var theName = this.options.appname;
     var createdMsg = 'Project ' + theName + ' has been created.';
-    this.log(this.options.doNotMake);
+    
     if (this.options.doNotMake) {
       this.log(chalk.red(createdMsg));
       this.log(chalk.red('The automatic generation of the makefile has been skipped, run "CMake CMakeLists.txt" to generate the makefile for this project.'));

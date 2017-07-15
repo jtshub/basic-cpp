@@ -26,7 +26,7 @@ Generating a new C++ application.  Specifying an application name is required, i
 yo basic-cpp [appname]
 ```
 
-Adding a new class to your application.  New classes have their own header and implementation files.  Each time you add a new class [Cmake](https://cmake.org) will be used to regenerate the makefile automatically. 
+Adding a new class to your application.  New classes have their own header and implementation files.  Each time you add a new class [Cmake](https://cmake.org) you will have the option to regenerate the makefile. 
 
 ```bash
 yo basic-cpp:class [classname]
@@ -44,8 +44,10 @@ This generator will setup a basic set of [Visual Studio Code](https://code.visua
  * Feel free to [learn more about Yeoman](http://yeoman.io/).
 
 ## To Do
-* have the generator setup the vscode settings to debug the app
-* add unit tests
+* Have the generator setup the vscode settings to debug the application.
+* Add additional unit tests, especially around CMake generation.
+* Add support for a testing framework and a sub-generator that will generate C++ tests.
+* Generate License file for the C++ project.
 
 ## License
 

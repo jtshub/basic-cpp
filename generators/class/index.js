@@ -9,21 +9,32 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
     this.argument('className', {type: String, require: true});
+
+    var notMakeOptArgs = {
+      description: 'Skip the CMake generation of the makefile.',
+      type: Boolean,
+      default: false
+    };
+
+    this.option('doNotMake', notMakeOptArgs);
   }
 
   prompting() {
     let prompts = [];
 
-    prompts.push({
-      type: 'confirm',
-      name: 'regenMake',
-      message: 'Regenerate makefile to include new class ' + chalk.yellow(this.args[0]) + '?',
-      default: 'Y'
-    });
+    if (!this.options.doNotMake) {
+      this.log(this.options.doNotMake);
+      prompts.push({
+        type: 'confirm',
+        name: 'regenMake',
+        message: 'Regenerate makefile to include new class ' + chalk.yellow(this.args[0]) + '?',
+        default: 'Y'
+      });
 
-    return this.prompt(prompts).then(answers => {
-      this.options.regenMake = answers.regenMake;
-    });
+      return this.prompt(prompts).then(answers => {
+        this.options.regenMake = answers.regenMake;
+      });
+    }
   }
 
   writing() {
@@ -55,7 +66,7 @@ module.exports = class extends Generator {
     if (this.options.regenMake) {
       this.log('regenerated makefile');
     } else {
-      this.log('did not regnerate makefile as specified');
+      this.log('did not regenerate makefile as specified');
     }
   }
 };
