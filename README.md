@@ -45,6 +45,7 @@ This generator will setup a basic set of [Visual Studio Code](https://code.visua
 
 ## To Do
 * Have the generator setup the vscode settings to debug the application.
+* Add support for both CLang and g++ compilers and allow the user to choose which to use.
 * Add additional unit tests, especially around CMake generation.
 * Add support for a testing framework and a sub-generator that will generate C++ tests.
 * Generate License file for the C++ project.
