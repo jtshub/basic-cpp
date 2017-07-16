@@ -120,12 +120,17 @@ module.exports = class extends Generator {
       this.templatePath('_main.cpp'),
       this.destinationPath(destination + 'src/main.cpp')
     );
+
+    this.fs.copy(
+      this.templatePath('_gitignore'),
+      this.destinationPath(destination + '.gitignore')
+    );
   }
 
   end() {
     var theName = this.options.appname;
     var createdMsg = 'Project ' + theName + ' has been created.';
-    
+
     if (this.options.doNotMake) {
       this.log(chalk.red(createdMsg));
       this.log(chalk.red('The automatic generation of the makefile has been skipped, run "CMake CMakeLists.txt" to generate the makefile for this project.'));

@@ -1,1 +1,1 @@
-#include "<%= className %>.h"
+#include "../inc/<%= className %>.h"

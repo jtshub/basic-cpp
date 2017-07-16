@@ -15,6 +15,7 @@ describe('basic-cpp:app no arguments, default options', () => {
 
   const files = ['foobar/CMakeLists.txt',
     'foobar/src/main.cpp',
+    'foobar/.gitignore',
     'foobar/.vscode/launch.json',
     'foobar/.vscode/tasks.json',
     'foobar/.vscode/c_cpp_properties.json'];
@@ -27,6 +28,7 @@ describe('basic-cpp:app no arguments, default options', () => {
     assert.fileContent('foobar/CMakeLists.txt', 'project("foobar")');
     assert.fileContent('foobar/CMakeLists.txt', 'add_executable("foobar"');
     assert.fileContent('foobar/CMakeLists.txt', 'set (use11 "ON")');
+    assert.fileContent('foobar/.gitignore', 'bin');
     assert.fileContent('foobar/.vscode/launch.json', '"name": "foobar"');
     assert.fileContent('foobar/.vscode/launch.json', '/bin/foobar"');
   });
@@ -44,6 +46,7 @@ describe('basic-cpp:app with project argument', () => {
 
   const files = ['fooblah/CMakeLists.txt',
     'fooblah/src/main.cpp',
+    'fooblah/.gitignore',
     'fooblah/.vscode/launch.json',
     'fooblah/.vscode/tasks.json',
     'fooblah/.vscode/c_cpp_properties.json'];
@@ -56,6 +59,7 @@ describe('basic-cpp:app with project argument', () => {
     assert.fileContent('fooblah/CMakeLists.txt', 'project("fooblah")');
     assert.fileContent('fooblah/CMakeLists.txt', 'add_executable("fooblah"');
     assert.fileContent('fooblah/CMakeLists.txt', 'set (use11 "ON")');
+    assert.fileContent('fooblah/.gitignore', 'bin');
     assert.fileContent('fooblah/.vscode/launch.json', '"name": "fooblah"');
     assert.fileContent('fooblah/.vscode/launch.json', '/bin/fooblah"');
   });
@@ -74,6 +78,7 @@ describe('basic-cpp:app without project directory', () => {
 
   const files = ['CMakeLists.txt',
     'src/main.cpp',
+    '.gitignore',
     '.vscode/launch.json',
     '.vscode/tasks.json',
     '.vscode/c_cpp_properties.json'];
@@ -86,6 +91,7 @@ describe('basic-cpp:app without project directory', () => {
     assert.fileContent('CMakeLists.txt', 'project("fooNoProj")');
     assert.fileContent('CMakeLists.txt', 'add_executable("fooNoProj"');
     assert.fileContent('CMakeLists.txt', 'set (use11 "ON")');
+    assert.fileContent('.gitignore', 'bin');
     assert.fileContent('.vscode/launch.json', '"name": "fooNoProj"');
     assert.fileContent('.vscode/launch.json', '/bin/fooNoProj"');
   });
@@ -103,7 +109,8 @@ describe('basic-cpp:app no vscode settings', () => {
   });
 
   const files = ['fooNoVsCode/CMakeLists.txt',
-    'fooNoVsCode/src/main.cpp'];
+    'fooNoVsCode/src/main.cpp',
+    'fooNoVsCode/.gitignore'];
 
   const noFiles = ['fooNoVsCode/.vscode/launch.json',
     'fooNoVsCode/.vscode/tasks.json',
@@ -121,6 +128,7 @@ describe('basic-cpp:app no vscode settings', () => {
     assert.fileContent('fooNoVsCode/CMakeLists.txt', 'project("fooNoVsCode")');
     assert.fileContent('fooNoVsCode/CMakeLists.txt', 'add_executable("fooNoVsCode"');
     assert.fileContent('fooNoVsCode/CMakeLists.txt', 'set (use11 "ON")');
+    assert.fileContent('fooNoVsCode/.gitignore', 'bin');
   });
 });
 
@@ -137,6 +145,7 @@ describe('basic-cpp:app not using c++11 compiler flag', () => {
 
   const files = ['fooNo11Flag/CMakeLists.txt',
     'fooNo11Flag/src/main.cpp',
+    'fooNo11Flag/.gitignore',
     'fooNo11Flag/.vscode/launch.json',
     'fooNo11Flag/.vscode/tasks.json',
     'fooNo11Flag/.vscode/c_cpp_properties.json'];
@@ -149,6 +158,7 @@ describe('basic-cpp:app not using c++11 compiler flag', () => {
     assert.fileContent('fooNo11Flag/CMakeLists.txt', 'project("fooNo11Flag")');
     assert.fileContent('fooNo11Flag/CMakeLists.txt', 'add_executable("fooNo11Flag"');
     assert.fileContent('fooNo11Flag/CMakeLists.txt', 'set (use11 "OFF")');
+    assert.fileContent('fooNo11Flag/.gitignore', 'bin');
     assert.fileContent('fooNo11Flag/.vscode/launch.json', '"name": "fooNo11Flag"');
     assert.fileContent('fooNo11Flag/.vscode/launch.json', '/bin/fooNo11Flag"');
   });
